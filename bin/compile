@@ -179,9 +179,10 @@ cd $build
 touch $build/.npmrc
 npm install --unsafe-perm --userconfig $build/.npmrc 2>&1
 
+echo "-----> running db migrations ..."
+./node_modules/gulp/bin/gulp.js db:migrate 2>&1
+
 echo "-----> precompiling assets ..."
 ./node_modules/gulp/bin/gulp.js assets:copy 2>&1
 
-
-
-
+echo `which goose`
